@@ -74,10 +74,11 @@ io.on('connection', (socket) => {
   socket.emit("hello", "que tal? qie pas?"); //emito mensajes hacia el cliente con el evento hello
 });
 //---------------------------------------------------------------------------------------------------
+/*
 setInterval(() => {
   
   io.emit('hora',`${new Date().toTimeString()}`);
-}, 60000);
+}, 60000);*/
 //---------------------------------------------------------------------------------------------------
 server.listen(port, () => {
   console.log('listening on *:3000');
