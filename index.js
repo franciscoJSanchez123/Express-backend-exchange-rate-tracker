@@ -52,7 +52,8 @@ cron.schedule('04 13 1-31 1-12 1-5 ',async()=>{
   const tasa=await PriceInstagram(false,true)
   console.log(tasa)
   io.emit('tasa',`${tasa}`)
-});
+},{scheduled: true,
+  timezone: 'America/Caracas'});
 
 //------------------------------------------------------------------------------------------------
 
