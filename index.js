@@ -72,7 +72,8 @@ io.on('connection', (socket) => {
     console.log(arg)
   })
   socket.on('solicitarTasa',(arg)=>{     //escucho mensajes desde el cliente con el evento 
-    console.log(arg)
+
+    socket.emit('ultimaTasa','algo')
   })
 
   socket.emit("hello", "que tal? qie pas?"); //emito mensajes hacia el cliente con el evento hello
@@ -83,6 +84,18 @@ setInterval(() => {
   
   io.emit('hora',`${new Date().toTimeString()}`);
 }, 60000);*/
+//---------------------------------------------------------------------------------------------------
+const MongoClient = require("mongodb").MongoClient
+
+const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.net/TasaDolarParalelo?retryWrites=true&w=majority'
+
+MongoClient.connect(url,{useUnifiedTopology: true },(err, client) => {
+  if (err) {
+    console.log("Error occurred connecting to MongoDB...");
+  }
+  
+  console.log("Connected to MongoDB!");
+})
 //---------------------------------------------------------------------------------------------------
 server.listen(port, () => {
   console.log('listening on *:3000');
