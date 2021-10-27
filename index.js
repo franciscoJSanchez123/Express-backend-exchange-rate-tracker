@@ -85,19 +85,27 @@ setInterval(() => {
   io.emit('hora',`${new Date().toTimeString()}`);
 }, 60000);*/
 //---------------------------------------------------------------------------------------------------
+/*
 const MongoClient = require("mongodb").MongoClient
 
 const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.net/TasaDolarParalelo?retryWrites=true&w=majority'
 
-MongoClient.connect(url,{useUnifiedTopology: true },async (err, client) => {
+MongoClient.connect(url,{useUnifiedTopology: true }, (err, client) => {
   if (err) {
     console.log("Error occurred connecting to MongoDB...");
   }
-  const monto= await client.db('TasaDolarParalelo').collection('tasa')
-  console.log(monto)
+  
   console.log("Connected to MongoDB!");
 })
+*/
 
+const mongoose = require('mongoose');
+
+const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.net/TasaDolarParalelo?retryWrites=true&w=majority'
+
+mongoose.connect(url,{useUnifiedTopology: true })
+  .then(bd=>console.log('conexion satisfactoria'))
+  .catch(error=>console.log('la conexion a la base de datos a fallado'))
 
 //---------------------------------------------------------------------------------------------------
 server.listen(port, () => {
