@@ -109,8 +109,10 @@ mongoose.connect(url,{useUnifiedTopology: true })
 
 //---------------------------------------------------------------------------------------------------
 const baseDeDatos=mongoose.model('tasa',new mongoose.Schema({ _id: String ,tasa: String,  }),'tasa')
-const precio =baseDeDatos.findById('6179791356e3bdc0e5897079')
-console.log(precio)
+const precio =baseDeDatos.findById('6179791356e3bdc0e5897079', async (err,data)=>{
+  console.log(data)
+})
+
 server.listen(port, () => {
   console.log('listening on *:3000');
 });
