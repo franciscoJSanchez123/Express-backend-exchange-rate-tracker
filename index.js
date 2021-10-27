@@ -93,12 +93,12 @@ MongoClient.connect(url,{useUnifiedTopology: true },(err, client) => {
   if (err) {
     console.log("Error occurred connecting to MongoDB...");
   }
-  client.db('TasaDolarParalelo').collection('tasa')
+  const monto=client.db('TasaDolarParalelo').collection('tasa').find("tasa")
+  console.log(monto)
   console.log("Connected to MongoDB!");
 })
 
-const monto=MongoClient.db('TasaDolarParalelo').collection('tasa').find("tasa")
-console.log(monto)
+
 //---------------------------------------------------------------------------------------------------
 server.listen(port, () => {
   console.log('listening on *:3000');
