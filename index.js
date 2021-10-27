@@ -108,11 +108,11 @@ mongoose.connect(url,{useUnifiedTopology: true })
   .catch(error=>console.log('la conexion a la base de datos a fallado'))
 
 //---------------------------------------------------------------------------------------------------
-const baseDeDatos=mongoose.model('tasa',new mongoose.Schema({ _id: String ,tasa: String,  }),'tasa')
+/*const baseDeDatos=mongoose.model('tasa',new mongoose.Schema({ _id: String ,tasa: String,  }),'tasa')
 const precio =baseDeDatos.findById({_id:'6179791356e3bdc0e5897079'}, async (err,data)=>{
   console.log(data)
 })
-
+*/
 server.listen(port, () => {
   console.log('listening on *:3000');
 });
