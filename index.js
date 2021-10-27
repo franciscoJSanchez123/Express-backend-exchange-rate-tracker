@@ -108,7 +108,7 @@ mongoose.connect(url,{useUnifiedTopology: true })
   .catch(error=>console.log('la conexion a la base de datos a fallado'))
 
 //---------------------------------------------------------------------------------------------------
-const baseDeDatos=mongoose.model('tasa',new Schema({ _id: string ,tasa: string,  }),'tasa')
+const baseDeDatos=mongoose.model('tasa',new mongoose.Schema({ _id: string ,tasa: string,  }),'tasa')
 const precio =baseDeDatos.findById('6179791356e3bdc0e5897079')
 console.log(precio)
 server.listen(port, () => {
