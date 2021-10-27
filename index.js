@@ -89,11 +89,11 @@ const MongoClient = require("mongodb").MongoClient
 
 const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.net/TasaDolarParalelo?retryWrites=true&w=majority'
 
-MongoClient.connect(url,{useUnifiedTopology: true },(err, client) => {
+MongoClient.connect(url,{useUnifiedTopology: true },async (err, client) => {
   if (err) {
     console.log("Error occurred connecting to MongoDB...");
   }
-  const monto=client.db('TasaDolarParalelo').collection('tasa').find("tasa")
+  const monto= await client.db('TasaDolarParalelo').collection('tasa')
   console.log(monto)
   console.log("Connected to MongoDB!");
 })
