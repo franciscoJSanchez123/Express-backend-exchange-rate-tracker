@@ -71,6 +71,9 @@ io.on('connection', (socket) => {
   socket.on('saludo',(arg)=>{     //escucho mensajes desde el cliente con el evento saludo
     console.log(arg)
   })
+  socket.on('solicitarTasa',(arg)=>{     //escucho mensajes desde el cliente con el evento 
+    console.log(arg)
+  })
 
   socket.emit("hello", "que tal? qie pas?"); //emito mensajes hacia el cliente con el evento hello
 });
