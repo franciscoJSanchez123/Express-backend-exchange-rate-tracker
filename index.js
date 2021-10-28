@@ -46,7 +46,7 @@ const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.
   .then(bd=>console.log('conexion satisfactoria'))
   .catch(error=>console.log('la conexion a la base de datos a fallado'))
 
-  const baseDeDatos=  mongoose.model('tasa',new mongoose.Schema({ _id: ObjectId ,tasa: String,  }),'tasa')
+  const baseDeDatos=  mongoose.model('tasa',new mongoose.Schema({ _id: String ,tasa: String,  }),'tasa')
 
 
 
