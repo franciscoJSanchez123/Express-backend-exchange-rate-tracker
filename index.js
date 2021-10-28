@@ -88,8 +88,13 @@ io.on('connection', (socket) => {
   socket.on('solicitarTasa',async(arg)=>{     //escucho mensajes desde el cliente con el evento 
     //const tasa=await baseDeDatos.find()
     //const id="6179791356e3bdc0e5897079"
-    const tasa= await baseDeDatos.findOne({ _id:ObjectId("617aa7a650862c9923fe4801")})
-    socket.emit('ultimaTasa',tasa)
+    const tasa= await baseDeDatos.findOne({ _id:"617aa7a650862c9923fe4801"},(error,data)=>{
+      if(error){
+        console.log(error)
+      }
+      console.log(data)
+    })
+    socket.emit('ultimaTasa',"tasa")
   })
 
   socket.emit("hello", "que tal? qie pas?"); //emito mensajes hacia el cliente con el evento hello
