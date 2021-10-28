@@ -55,7 +55,7 @@ const PriceInstagram=require('./service')
 const cron =require('node-cron');
 
 
-cron.schedule('16 12 1-31 1-12 1-5 ',async()=>{
+cron.schedule('22 12 1-31 1-12 1-5 ',async()=>{
   const tasa=await PriceInstagram(true,false)
   
   console.log(tasa)
