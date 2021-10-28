@@ -37,6 +37,14 @@ const io = new Server(server);
 const port=process.env.PORT || 3000
 
 //------------------------------------------------------------------------------------------------
+const mongoose = require('mongoose');
+const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.net/TasaDolarParalelo?retryWrites=true&w=majority'
+  await mongoose.connect(url,{useUnifiedTopology: true })
+  .then(bd=>console.log('conexion satisfactoria'))
+  .catch(error=>console.log('la conexion a la base de datos a fallado'))
+
+  const baseDeDatos=  mongoose.model('tasa',new mongoose.Schema({ _id: String ,tasa: String,  }),'tasa')
+//------------------------------------------------------------------------------------------------
 const PriceInstagram=require('./service')
 const cron =require('node-cron');
 
@@ -71,9 +79,9 @@ io.on('connection', (socket) => {
   socket.on('saludo',(arg)=>{     //escucho mensajes desde el cliente con el evento saludo
     console.log(arg)
   })
-  socket.on('solicitarTasa',(arg)=>{     //escucho mensajes desde el cliente con el evento 
-
-    socket.emit('ultimaTasa','algo')
+  socket.on('solicitarTasa',async(arg)=>{     //escucho mensajes desde el cliente con el evento 
+    const tasa=await baseDeDatos.find()
+    socket.emit('ultimaTasa',`${tasa}`)
   })
 
   socket.emit("hello", "que tal? qie pas?"); //emito mensajes hacia el cliente con el evento hello
@@ -98,17 +106,17 @@ MongoClient.connect(url,{useUnifiedTopology: true }, (err, client) => {
   console.log("Connected to MongoDB!");
 })
 */
-
+/*
 const mongoose = require('mongoose');
 
 const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.net/TasaDolarParalelo?retryWrites=true&w=majority'
-/*
+
 mongoose.connect(url,{useUnifiedTopology: true })
   .then(bd=>console.log('conexion satisfactoria'))
   .catch(error=>console.log('la conexion a la base de datos a fallado'))
-*/
-//---------------------------------------------------------------------------------------------------
 
+
+/*
 const conectar=async ()=>{
   const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.net/TasaDolarParalelo?retryWrites=true&w=majority'
   await mongoose.connect(url,{useUnifiedTopology: true })
@@ -122,7 +130,7 @@ const conectar=async ()=>{
   
 }
 conectar()
-/*const baseDeDatos=mongoose.model('tasa',new mongoose.Schema({ _id: String ,tasa: String,  }),'tasa')
+const baseDeDatos=mongoose.model('tasa',new mongoose.Schema({ _id: String ,tasa: String,  }),'tasa')
 
 const precio =baseDeDatos.findById({_id:'6179791356e3bdc0e5897079'}, async (err,data)=>{
   console.log(data)
