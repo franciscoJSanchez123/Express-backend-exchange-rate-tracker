@@ -88,7 +88,7 @@ io.on('connection', (socket) => {
   socket.on('solicitarTasa',async(arg)=>{     //escucho mensajes desde el cliente con el evento 
     //const tasa=await baseDeDatos.find()
     const id="6179791356e3bdc0e5897079"
-    const tasa= await baseDeDatos.findById(id)
+    const tasa= await baseDeDatos.findById(id,'tasa')
     socket.emit('ultimaTasa',`${tasa}`)
   })
 
