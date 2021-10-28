@@ -95,55 +95,9 @@ io.on('connection', (socket) => {
   socket.emit("hello", "que tal? qie pas?"); //emito mensajes hacia el cliente con el evento hello
 });
 //---------------------------------------------------------------------------------------------------
-/*
-setInterval(() => {
-  
-  io.emit('hora',`${new Date().toTimeString()}`);
-}, 60000);*/
+
 //---------------------------------------------------------------------------------------------------
-/*
-const MongoClient = require("mongodb").MongoClient
 
-const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.net/TasaDolarParalelo?retryWrites=true&w=majority'
-
-MongoClient.connect(url,{useUnifiedTopology: true }, (err, client) => {
-  if (err) {
-    console.log("Error occurred connecting to MongoDB...");
-  }
-  
-  console.log("Connected to MongoDB!");
-})
-*/
-/*
-const mongoose = require('mongoose');
-
-const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.net/TasaDolarParalelo?retryWrites=true&w=majority'
-
-mongoose.connect(url,{useUnifiedTopology: true })
-  .then(bd=>console.log('conexion satisfactoria'))
-  .catch(error=>console.log('la conexion a la base de datos a fallado'))
-
-
-/*
-const conectar=async ()=>{
-  const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.net/TasaDolarParalelo?retryWrites=true&w=majority'
-  await mongoose.connect(url,{useUnifiedTopology: true })
-  .then(bd=>console.log('conexion satisfactoria'))
-  .catch(error=>console.log('la conexion a la base de datos a fallado'))
-
-  const baseDeDatos=  mongoose.model('tasa',new mongoose.Schema({ _id: String ,tasa: String,  }),'tasa')
-
-  const precio = await baseDeDatos.find()
-  console.log(precio)
-  
-}
-conectar()
-const baseDeDatos=mongoose.model('tasa',new mongoose.Schema({ _id: String ,tasa: String,  }),'tasa')
-
-const precio =baseDeDatos.findById({_id:'6179791356e3bdc0e5897079'}, async (err,data)=>{
-  console.log(data)
-})
-*/
 server.listen(port, () => {
   console.log('listening on *:3000');
 });
