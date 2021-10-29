@@ -11,9 +11,9 @@ const PriceInstagram=async (is9AM,is1PM)=>{
     let hora;
     is9AM? hora='9:00 AM': '';
     is1PM? hora='1:00 PM': '';
+    let fecha = new Date().toLocaleDateString();
     publicacion.map(async (elemento,i)=>{
         const cadena=`${elemento.caption}` 
-        const fecha = new Date().toLocaleDateString();
         
         if(cadena.includes('Actualización:') && cadena.includes(`${fecha}`) && cadena.includes(`${hora}`) && cadena.includes('#promediodeldolar')){
             index=i
@@ -49,7 +49,6 @@ const PriceInstagram=async (is9AM,is1PM)=>{
     console.log(tasa2)
     console.log(bolivar)*/
     const tasa=parseFloat(bolivar.replace(',',"."));
-    const fecha=new Date().toLocaleDateString();
     const respuesta = {tasa,fecha,hora}
     return respuesta
 }
