@@ -7,13 +7,14 @@ const PriceInstagram=async (is9AM,is1PM)=>{
     const res=await fetch(`https://graph.facebook.com/v12.0/${myInstaId}?fields=business_discovery.username(enparalelovzla){profile_picture_url,followers_count,media_count,media{caption}}&access_token=${token}`)
     const data=await res.json();
     const publicacion=data.business_discovery.media.data
-    let index=0
+    let index=0;
+    let hora;
+    is9AM? hora='9:00 AM': '';
+    is1PM? hora='1:00 PM': '';
     publicacion.map(async (elemento,i)=>{
         const cadena=`${elemento.caption}` 
         const fecha = new Date().toLocaleDateString();
-        let hora;
-        is9AM? hora='9:00 AM': '';
-        is1PM? hora='1:00 PM': '';
+        
         if(cadena.includes('Actualización:') && cadena.includes(`${fecha}`) && cadena.includes(`${hora}`) && cadena.includes('#promediodeldolar')){
             index=i
         }
