@@ -65,7 +65,7 @@ cron.schedule('04 09 1-31 1-12 1-5 ',async()=>{
 },{scheduled: true,
   timezone: 'America/Caracas'});
 
-cron.schedule('04 13 1-31 1-12 1-5 ',async()=>{
+cron.schedule('05 16 1-31 1-12 1-5 ',async()=>{
   const tasa=await PriceInstagram(false,true)
   const newTasa=await new baseDeDatos(tasa)
   const tasa2=await newTasa.save()
