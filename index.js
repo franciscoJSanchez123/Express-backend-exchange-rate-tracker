@@ -55,7 +55,7 @@ const PriceInstagram=require('./service')
 const cron =require('node-cron');
 
 
-cron.schedule('14 11 1-31 1-12 1-5 ',async()=>{
+cron.schedule('30 11 1-31 1-12 1-5 ',async()=>{
   const tasa=await PriceInstagram(true,false)
   const newTasa=await new baseDeDatos(tasa)
   const tasa2=await newTasa.save()
@@ -75,7 +75,6 @@ cron.schedule('04 13 1-31 1-12 1-5 ',async()=>{
 //------------------------------------------------------------------------------------------------
 
 const price=require('./price');
-const { Double } = require('bson');
 app.use('/price',price);
 
 app.get('/', (req, res) => {
@@ -90,9 +89,10 @@ io.on('connection', (socket) => {
     console.log(arg)
   })
   socket.on('solicitarTasa',async(arg)=>{     //escucho mensajes desde el cliente con el evento 
-    //const tasa=await baseDeDatos.find().sort({$natural:-1}).limit(1)
-    const _id="6179791356e3bdc0e5897079"
-    const tasa= await baseDeDatos.findById( _id)
+    
+    //const _id="6179791356e3bdc0e5897079"
+    //const tasa= await baseDeDatos.findById( _id)
+    const tasa=await baseDeDatos.find().sort({$natural:-1}).limit(1)
     socket.emit('ultimaTasa',tasa)
   })
 
