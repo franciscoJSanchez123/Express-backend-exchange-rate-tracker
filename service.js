@@ -49,7 +49,7 @@ const PriceInstagram=async (is9AM,is1PM)=>{
     console.log(bolivar)*/
     const tasa=parseFloat(bolivar.replace(',',"."))
     
-    return {tasa,hora}
+    return ({tasa,hora})
 }
 
 module.exports=PriceInstagram; 
