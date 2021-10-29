@@ -46,7 +46,7 @@ const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.
   .then(bd=>console.log('conexion satisfactoria'))
   .catch(error=>console.log('la conexion a la base de datos a fallado'))
 
-  const baseDeDatos=  mongoose.model('tasa',new mongoose.Schema({ tasa: String  }),'tasa')
+  const baseDeDatos=  mongoose.model('tasa',new mongoose.Schema({ tasa: Number  }, {versionKey: false}),'tasa')
 
 
 
@@ -55,7 +55,7 @@ const PriceInstagram=require('./service')
 const cron =require('node-cron');
 
 
-cron.schedule('44 08 1-31 1-12 1-5 ',async()=>{
+cron.schedule('52 08 1-31 1-12 1-5 ',async()=>{
   const tasa=await PriceInstagram(false,true)
   const newTasa=await new baseDeDatos({tasa:tasa})
   const tasa2=await newTasa.save()
@@ -74,7 +74,8 @@ cron.schedule('04 13 1-31 1-12 1-5 ',async()=>{
 
 //------------------------------------------------------------------------------------------------
 
-const price=require('./price')
+const price=require('./price');
+const { Double } = require('bson');
 app.use('/price',price);
 
 app.get('/', (req, res) => {
