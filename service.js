@@ -1,7 +1,7 @@
 const fetch= require('node-fetch');
 
 
-const PriceInstagram=async (is9AM,is1PM=true)=>{
+const PriceInstagram=async (is9AM,is1PM)=>{
     const myInstaId='17841450044621705'
     const token='EAAMEED5d75YBAMVXIxZAbMqqCPbxT0t0hlbpEwG6ds3fOaCqshrkTJcQiqcrBG3rhaH9GLSjsVLlZCIocWZBl1HlrWjuo3gE5RDGcsrkzue8bka8an5MFBRRZBd4gGNL5l274wStsbOGd9UQxm3pMdD9BkKHFr8Js2ZBzAtAPZC39dVnyx32trgRKNQqjew0oZD'
     const res=await fetch(`https://graph.facebook.com/v12.0/${myInstaId}?fields=business_discovery.username(enparalelovzla){profile_picture_url,followers_count,media_count,media{caption}}&access_token=${token}`)
