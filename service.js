@@ -34,8 +34,8 @@ const PriceInstagram=async (is9AM,is1PM)=>{
     }
     const inicio2=estracto.indexOf("💵")
     const final2=estracto.indexOf(`${variacion}`)  //🔻  🔺  =
-    const tasa=estracto.substring(inicio2,final2)
-    const separar=tasa.split(" ")
+    const tasa2=estracto.substring(inicio2,final2)
+    const separar=tasa2.split(" ")
     let bolivar=''
     separar.map(elemento=>{
         if(!(elemento==='Bs.')&& !(elemento==='💵') && elemento.length>2){
@@ -45,10 +45,11 @@ const PriceInstagram=async (is9AM,is1PM)=>{
     })
    /* console.log(publicacion[index].caption)
     console.log(estracto)
-    console.log(tasa)
+    console.log(tasa2)
     console.log(bolivar)*/
-    const price=parseFloat(bolivar.replace(',',"."))
-    return price
+    const tasa=parseFloat(bolivar.replace(',',"."))
+    const fecha=new Date().toLocaleDateString()
+    return {tasa, fecha, hora}
 }
 
 module.exports=PriceInstagram; 
