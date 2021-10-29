@@ -65,15 +65,17 @@ cron.schedule('04 09 1-31 1-12 1-5 ',async()=>{
 },{scheduled: true,
   timezone: 'America/Caracas'});
 
-cron.schedule('24 16 1-31 1-12 1-5 ',async()=>{
+cron.schedule('30 16 1-31 1-12 1-5 ',async()=>{
 
   console.log('todo bien con cron')
-  /*const tasa=await PriceInstagram(false,true)
+  const tasa=await PriceInstagram(false,true)
+  /*
   const newTasa=await new baseDeDatos(tasa)
   const tasa2=await newTasa.save()
   console.log('todo bien',tasa2)
   console.log(tasa)
   io.emit('tasa',`${tasa}`)*/
+  console.log(tasa)
 },{scheduled: true,
   timezone: 'America/Caracas'});
 
