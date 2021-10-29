@@ -55,7 +55,7 @@ const PriceInstagram=require('./service')
 const cron =require('node-cron');
 
 
-cron.schedule('37 11 1-31 1-12 1-5 ',async()=>{
+cron.schedule('04 09 1-31 1-12 1-5 ',async()=>{
   const tasa=await PriceInstagram(true,false)
   const newTasa=await new baseDeDatos(tasa)
   const tasa2=await newTasa.save()
@@ -67,6 +67,9 @@ cron.schedule('37 11 1-31 1-12 1-5 ',async()=>{
 
 cron.schedule('04 13 1-31 1-12 1-5 ',async()=>{
   const tasa=await PriceInstagram(false,true)
+  const newTasa=await new baseDeDatos(tasa)
+  const tasa2=await newTasa.save()
+  console.log('todo bien',tasa2)
   console.log(tasa)
   io.emit('tasa',`${tasa}`)
 },{scheduled: true,
@@ -92,7 +95,7 @@ io.on('connection', (socket) => {
     
     //const _id="6179791356e3bdc0e5897079"
     //const tasa= await baseDeDatos.findById( _id)
-    const tasa=await baseDeDatos.find().sort({$natural:-1}).limit(1)
+    const tasa=await baseDeDatos.find().sort({$natural:-1}).limit(1)//solicito el ultimo dato guardado pero como es una matriz con 1 elememto le mando el elemento [0]
     socket.emit('ultimaTasa',tasa[0])
   })
 
