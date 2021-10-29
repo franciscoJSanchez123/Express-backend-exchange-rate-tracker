@@ -48,7 +48,7 @@ const PriceInstagram=async (is9AM,is1PM)=>{
     console.log(tasa2)
     console.log(bolivar)*/
     const tasa=parseFloat(bolivar.replace(',',"."))
-    const respuesta = {tasa,hora}
+    const respuesta = {tasa}
     return respuesta
 }
 
