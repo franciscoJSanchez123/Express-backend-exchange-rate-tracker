@@ -10,7 +10,7 @@ const PriceInstagram=async (is9AM,is1PM)=>{
     let index=0
     publicacion.map(async (elemento,i)=>{
         const cadena=`${elemento.caption}` 
-        const fecha = '28/10/2021' //new Date().toLocaleDateString();
+        const fecha = new Date().toLocaleDateString();
         let hora;
         is9AM? hora='9:00 AM': '';
         is1PM? hora='1:00 PM': '';
