@@ -46,7 +46,7 @@ const url='mongodb+srv://Ferreservica2020:fjJrGaSA959190@cluster0.h0rkb.mongodb.
   .then(bd=>console.log('conexion satisfactoria'))
   .catch(error=>console.log('la conexion a la base de datos a fallado'))
 
-  const baseDeDatos=  mongoose.model('tasa',new mongoose.Schema({ tasa: Number,fecha:Date,hora:String  }, {versionKey: false}),'tasa')
+  const baseDeDatos=  mongoose.model('tasa',new mongoose.Schema({ tasa: Number,fecha:String,hora:String  }, {versionKey: false}),'tasa')
 
 
 
@@ -55,7 +55,7 @@ const PriceInstagram=require('./service')
 const cron =require('node-cron');
 
 
-cron.schedule('47 09 1-31 1-12 1-5 ',async()=>{
+cron.schedule('54 09 1-31 1-12 1-5 ',async()=>{
   const tasa=await PriceInstagram(true,false)
   //const newTasa=await new baseDeDatos(tasa)
   //const tasa2=await newTasa.save()

@@ -49,7 +49,8 @@ const PriceInstagram=async (is9AM,is1PM)=>{
     console.log(bolivar)*/
     const tasa=parseFloat(bolivar.replace(',',"."))
     const fecha=new Date().toLocaleDateString()
-    return {tasa, fecha, hora}
+    const res={tasa, fecha, hora}
+    return res
 }
 
 module.exports=PriceInstagram; 
