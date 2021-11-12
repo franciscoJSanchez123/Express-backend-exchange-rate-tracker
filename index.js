@@ -99,7 +99,7 @@ io.on('connection', (socket) => {
     //const _id="6179791356e3bdc0e5897079"
     //const tasa= await baseDeDatos.findById( _id)
     const tasa=await baseDeDatos.find().sort({$natural:-1}).limit(1)//solicito el ultimo dato guardado pero como es una matriz con 1 elememto le mando el elemento [0]
-    socket.emit('ultimaTasa',tasa[0])
+    io.emit('ultimaTasa',tasa[0])
   })
 
   socket.emit("hello", "que tal? qie pas?"); //emito mensajes hacia el cliente con el evento hello
