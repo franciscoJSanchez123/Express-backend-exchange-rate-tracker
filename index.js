@@ -95,7 +95,7 @@ io.on('connection', (socket) => {
     console.log(arg)
   })
   socket.on('solicitarTasa',async(arg)=>{     //escucho mensajes desde el cliente con el evento 
-    
+    console.log('tasa del dia')
     //const _id="6179791356e3bdc0e5897079"
     //const tasa= await baseDeDatos.findById( _id)
     const tasa=await baseDeDatos.find().sort({$natural:-1}).limit(1)//solicito el ultimo dato guardado pero como es una matriz con 1 elememto le mando el elemento [0]
