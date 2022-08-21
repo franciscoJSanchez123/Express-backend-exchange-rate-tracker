@@ -84,7 +84,7 @@ const price=require('./price');
 app.use('/price',price);
 
 app.get('/', (req, res) => {
-    res.json('hello franciso!!')
+    res.json('hello francisco!!')
     //console.log(req)
 });
 //-------------------------------------------------------------------------------------------------
