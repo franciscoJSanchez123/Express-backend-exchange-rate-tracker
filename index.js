@@ -12,8 +12,8 @@ const port=process.env.PORT || 3000
 
 
 const mongoose = require('mongoose');
-const url='url'
-   mongoose.connect(url,{useUnifiedTopology: true })
+  const url='url'
+  mongoose.connect(url,{useUnifiedTopology: true })
   .then(bd=>console.log('conexion satisfactoria'))
   .catch(error=>console.log('la conexion a la base de datos a fallado'))
 
@@ -58,10 +58,10 @@ io.on('connection', (socket) => {
  
 
   
-  socket.on('solicitarTasa',async(arg)=>{     //escucho mensajes desde el cliente con el evento 
+  socket.on('solicitarTasa',async(arg)=>{     
    
     
-    const tasa=await baseDeDatos.find().sort({$natural:-1}).limit(1)//solicito el ultimo dato guardado pero como es una matriz con 1 elememto le mando el elemento [0]
+    const tasa=await baseDeDatos.find().sort({$natural:-1}).limit(1)
     socket.emit('ultimaTasa',tasa[0])
   })
 
